@@ -13,7 +13,8 @@ model Application {
   email           String
   rollNo          String
   year            String
-  domain          String
+  primaryDomain   String?
+  domain          String?
   secondaryDomain String?
   portfolio       String?
   motivation      String
@@ -21,6 +22,7 @@ model Application {
   updatedAt       DateTime @updatedAt
 
   @@index([email])
+  @@index([primaryDomain])
   @@index([domain])
 }
 
@@ -31,6 +33,7 @@ model EventRegistration {
   rollNo          String
   year            String
   eventName       String
+  primaryDomain   String?
   domain          String?
   secondaryDomain String?
   portfolio       String?

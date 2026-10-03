@@ -10,6 +10,7 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
     email: '',
     rollNo: '',
     year: '2nd Year',
+    primaryDomain: initialDomain || 'tech',
     domain: initialDomain || 'tech',
     secondaryDomain: '',
     portfolio: '',
@@ -24,6 +25,7 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
     if (initialDomain) {
       setFormData((prev) => ({
         ...prev,
+        primaryDomain: initialDomain,
         domain: initialDomain,
         secondaryDomain: prev.secondaryDomain === initialDomain ? '' : prev.secondaryDomain,
       }));
@@ -38,6 +40,7 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
     setLoading(true);
     setErrorMessage('');
 
+    const chosenDomain = formData.primaryDomain || formData.domain || 'tech';
     const path = initialEvent ? '/api/event-registrations' : '/api/applications';
     const payload = initialEvent
       ? {
@@ -46,7 +49,8 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
           rollNo: formData.rollNo,
           year: formData.year,
           eventName: initialEvent,
-          domain: formData.domain,
+          primaryDomain: chosenDomain,
+          domain: chosenDomain,
           secondaryDomain: formData.secondaryDomain || null,
           portfolio: formData.portfolio,
           message: formData.motivation,
@@ -56,7 +60,8 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
           email: formData.email,
           rollNo: formData.rollNo,
           year: formData.year,
-          domain: formData.domain,
+          primaryDomain: chosenDomain,
+          domain: chosenDomain,
           secondaryDomain: formData.secondaryDomain || null,
           portfolio: formData.portfolio,
           motivation: formData.motivation,
@@ -246,12 +251,13 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
                       onClick={() =>
                         setFormData((prev) => ({
                           ...prev,
+                          primaryDomain: d.id,
                           domain: d.id,
                           secondaryDomain: prev.secondaryDomain === d.id ? '' : prev.secondaryDomain,
                         }))
                       }
                       className={`p-2.5 rounded-xl text-xs font-bold transition-all border text-left cursor-pointer ${
-                        formData.domain === d.id
+                        (formData.primaryDomain || formData.domain) === d.id
                           ? 'bg-[#20A2B1]/15 text-[#173F5F] border-[#20A2B1] shadow-xs'
                           : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-300'
                       }`}
@@ -280,7 +286,7 @@ export default function ApplicationModal({ isOpen, onClose, initialDomain = 'tec
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {DOMAINS.map((d) => {
-                    const isPrimary = formData.domain === d.id;
+                    const isPrimary = (formData.primaryDomain || formData.domain) === d.id;
                     const isSelected = formData.secondaryDomain === d.id;
                     return (
                       <button
