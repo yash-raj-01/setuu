@@ -57,10 +57,9 @@ apiRouter.get('/health', (_req, res) => {
 // ─── Applications (Recruitment Form) ───
 apiRouter.post('/applications', async (req, res) => {
   try {
-    const { fullName, email, rollNo, year, primaryDomain, domain, secondaryDomain, portfolio, motivation } = req.body;
-    const resolvedPrimaryDomain = primaryDomain || domain;
+    const { fullName, email, rollNo, year, domain, secondaryDomain, portfolio, motivation } = req.body;
 
-    if (!fullName || !email || !rollNo || !year || !resolvedPrimaryDomain || !motivation) {
+    if (!fullName || !email || !rollNo || !year || !domain || !motivation) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
@@ -74,8 +73,7 @@ apiRouter.post('/applications', async (req, res) => {
             email,
             rollNo,
             year,
-            primaryDomain: resolvedPrimaryDomain,
-            domain: resolvedPrimaryDomain,
+            domain,
             secondaryDomain: secondaryDomain || null,
             portfolio: portfolio || null,
             motivation,
@@ -96,8 +94,7 @@ apiRouter.post('/applications', async (req, res) => {
         email,
         rollNo,
         year,
-        primaryDomain: resolvedPrimaryDomain,
-        domain: resolvedPrimaryDomain,
+        domain,
         secondaryDomain: secondaryDomain || null,
         portfolio: portfolio || null,
         motivation,
@@ -137,8 +134,7 @@ apiRouter.get('/applications', async (_req, res) => {
 // ─── Event Registrations ───
 apiRouter.post('/event-registrations', async (req, res) => {
   try {
-    const { fullName, email, rollNo, year, eventName, primaryDomain, domain, secondaryDomain, portfolio, message } = req.body;
-    const resolvedPrimaryDomain = primaryDomain || domain || null;
+    const { fullName, email, rollNo, year, eventName, domain, secondaryDomain, portfolio, message } = req.body;
 
     if (!fullName || !email || !rollNo || !year || !eventName) {
       return res.status(400).json({ error: 'Missing required fields' });
@@ -155,8 +151,7 @@ apiRouter.post('/event-registrations', async (req, res) => {
             rollNo,
             year,
             eventName,
-            primaryDomain: resolvedPrimaryDomain,
-            domain: resolvedPrimaryDomain,
+            domain: domain || null,
             secondaryDomain: secondaryDomain || null,
             portfolio: portfolio || null,
             message: message || null,
@@ -175,8 +170,7 @@ apiRouter.post('/event-registrations', async (req, res) => {
         rollNo,
         year,
         eventName,
-        primaryDomain: resolvedPrimaryDomain,
-        domain: resolvedPrimaryDomain,
+        domain: domain || null,
         secondaryDomain: secondaryDomain || null,
         portfolio: portfolio || null,
         message: message || null,

@@ -35,8 +35,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
-      const { fullName, email, rollNo, year, eventName, primaryDomain, domain, secondaryDomain, portfolio, message } = body;
-      const resolvedPrimaryDomain = primaryDomain || domain || null;
+      const { fullName, email, rollNo, year, eventName, domain, secondaryDomain, portfolio, message } = body;
 
       if (!fullName || !email || !rollNo || !year || !eventName) {
         return res.status(400).json({ error: 'Missing required fields' });
@@ -56,8 +55,7 @@ export default async function handler(req, res) {
               rollNo,
               year,
               eventName,
-              primaryDomain: resolvedPrimaryDomain,
-              domain: resolvedPrimaryDomain,
+              domain: domain || null,
               secondaryDomain: secondaryDomain || null,
               portfolio: portfolio || null,
               message: message || null,
@@ -78,8 +76,7 @@ export default async function handler(req, res) {
           rollNo,
           year,
           eventName,
-          primaryDomain: resolvedPrimaryDomain,
-          domain: resolvedPrimaryDomain,
+          domain: domain || null,
           secondaryDomain: secondaryDomain || null,
           portfolio: portfolio || null,
           message: message || null,
