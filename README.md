@@ -1,16 +1,67 @@
-# React + Vite.
+# SETU
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+SETU is a modern full-stack community platform for a student-driven organization. The project includes a landing page, event promotion, recruitment forms, domain-based application flow, and a backend API for storing submissions in PostgreSQL or an in-memory fallback.
 
-Currently, two official plugins are available:
+This repository is structured as a monorepo with:
+- a Vite + React frontend in `client/`
+- an Express API in `server/`
+- Prisma schema and database integration for PostgreSQL
+- root-level scripts to run and build the project together
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
+https://setuu-fawn.vercel.app
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Frontend
+- React 19
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
 
-## Expanding the Oxlint configuration
+Backend
+- Node.js
+- Express
+- Prisma ORM
+- PostgreSQL
+- CORS
+- dotenv
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Features
+
+- Modern landing page with hero, about, events, team, and stories sections
+- Recruitment application forms for multiple domains
+- Event registration workflow
+- Contact form support
+- Theme toggle
+- API-ready backend with PostgreSQL persistence
+- In-memory fallback when database is not configured
+
+## Project Structure
+
+```bash
+setuu/
+├── client/
+│   ├── public/
+│   ├── src/
+│   ├── .env.example
+│   ├── .oxlintrc.json
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── vercel.json
+│   └── vite.config.js
+├── server/
+│   ├── lib/
+│   ├── prisma/
+│   ├── .env.example
+│   ├── index.js
+│   ├── package.json
+│   └── package-lock.json
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+├── vercel.json
+└── prisma/
