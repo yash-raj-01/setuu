@@ -304,11 +304,19 @@ export const CURRENT_MEMBERS = [
 ];
 
 export const EX_MEMBERS = [
-  'Amanjeet Malik',
-  'Ayush',
-  'Arohi',
+   'Amanjeet Malik',
+  'Ayush Kumar Pandey',
+  'Arohi Jadhav',
   'Khyati',
-  'Ananya',
+  'Ananya Gupta',
+  'Aditya',
+  'Anaya pandey',
+  'Anshika Khurana',
+  'Deeptanu',
+  'Vipul',
+  'Vivek',
+  'Shubhi',
+  'Soham'
 ];
 
 export const ALL_MEMBERS = CURRENT_MEMBERS;
