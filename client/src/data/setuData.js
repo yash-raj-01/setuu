@@ -207,11 +207,11 @@ export const TEAM_MEMBERS = [
     quote: '"Empowering every student to solve problems that matter."',
   },
   {
-    id: 'content-lead',
+    id: 'Social Media and Marketing-lead',
     name: 'Vedansh Saini',
     role: 'Social Media and Marketing HEAD',
     category: 'Core',
-    domain: 'Content',
+    domain: 'marketing',
     bio: 'Journalism & Tech ’27. Documenting tech builds, writing tutorials, producing demo videos, and hosting the SETU Tech Talks podcast.',
     image: '/team/vedansh-saini.jpg',
     imagePosition: 'center 20%',
